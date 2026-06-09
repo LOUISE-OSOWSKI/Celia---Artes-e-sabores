@@ -1,0 +1,872 @@
+/* ============================================================
+   🎨 PALETA DE CORES E CONFIGURAÇÕES GERAIS (CÉLIA)
+   ============================================================ */
+:root {
+    --bg-creme: #FAF6F0;
+    --detalhe-rosa: #F7DDE1;
+    --primaria-vinho: #A61919;
+    --texto-pink:#FAF6F0;
+    --texto-suave: #6E5B51;
+    --branco: #FFFFFF;
+    --cabeçalho-bege: #FAF6F0;
+    --sombra-suave: rgba(59, 36, 22, 0.05);
+    --sombra-card: rgba(59, 36, 22, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+    body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-y: auto;
+}
+
+
+h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+}
+
+section {
+    padding: 80px 10%;
+    text-align: center;
+    position: relative;
+}
+
+.section-subtitle {
+    color: var(--primaria-vinho);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.section-description {
+    color: var(--texto-suave);
+    max-width: 600px;
+    margin: 0 auto 40px auto;
+    font-size: 1rem;
+}
+
+/* ============================================================
+   ⚡ BOTÕES GERAIS
+   ============================================================ */
+.btn {
+    display: inline-block;
+    padding: 12px 28px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: var(--primaria-vinho);
+    color: var(--branco);
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #821212;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--texto-marrom);
+    border: 1px solid var(--texto-marrom);
+}
+
+.btn-secondary:hover {
+    background-color: rgba(59, 36, 22, 0.05);
+    transform: translateY(-2px);
+}
+
+/* ============================================================
+   🧩 NAVBAR SUPERIOR 
+   ============================================================ */
+header {
+    background-color: var(--cabeçalho-bege);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(59, 36, 22, 0.05);
+    width: 100%;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    flex-wrap: nowrap; 
+}
+
+.logo-img {
+    height: 60px;
+    width: auto;
+    object-fit: contain;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+    align-items: center;
+    margin: 0 20px;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: var(--texto-marrom);
+    font-weight: 500;
+    font-size: 0.9rem;
+    white-space: nowrap; 
+}
+
+.nav-menu a:hover {
+    color: var(--primaria-vinho);
+}
+
+.nav-cta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0; 
+}
+
+.btn-header-login {
+    background-color: var(--branco);
+    color: var(--texto-marrom);
+    padding: 10px 24px;
+    border: 1px solid rgba(59, 36, 22, 0.15);
+    font-size: 0.85rem;
+    border-radius: 30px;
+    line-height: 1;
+}
+
+.btn-header-login:hover {
+    background-color: #f7f2ea;
+}
+
+/* ============================================================
+   🔥 HERO SECTION 
+   ============================================================ */
+.hero-section {
+    position: relative; 
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 80px 10%;
+    width: 100%;
+    overflow: hidden;
+    background-color: var(--bg-creme); 
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/images/morango.jpeg'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.20; 
+    z-index: 1; 
+}
+
+.hero-container {
+    position: relative;
+    z-index: 2; 
+    max-width: 800px;
+    margin: 0 auto;
+    display: block;
+    width: 100%;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero-tagline {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--primaria-vinho);
+    display: block;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+.hero-section h1 {
+    font-size: 4rem;
+    line-height: 1.1;
+    color: var(--texto-marrom);
+    margin-bottom: 25px;
+}
+
+.hero-section h1 em {
+    color: var(--primaria-vinho);
+    font-style: italic;
+}
+
+.hero-section p {
+    max-width: 650px;
+    margin: 0 auto 35px auto;
+    color: var(--texto-suave);
+    font-size: 1.1rem;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+/* ============================================================
+   🔐 PÁGINA DE LOGIN CORRIGIDA (CENTRALIZAÇÃO TOTAL)
+   ============================================================ */
+.login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 90px); 
+    padding: 60px 20px;
+    background-color: var(--bg-creme);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.login-card {
+    background-color: var(--branco);
+    padding: 45px 40px;
+    border-radius: 24px;
+    box-shadow: 0 10px 30px var(--sombra-suave);
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.login-card h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    color: var(--texto-marrom);
+    margin-bottom: 10px;
+    margin-top: 0;
+}
+
+.login-card p {
+    color: var(--texto-suave);
+    font-size: 0.9rem;
+    margin-bottom: 30px;
+}
+
+.login-card .form-group {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.login-card .form-limpo input {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.login-card .form-actions {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 25px;
+}
+
+.login-card .btn-submit {
+    width: 100%;
+    padding: 14px 0;
+    text-align: center;
+}
+.btn-header-cadastro {
+    background-color: #B59A7C;
+    color: var(--branco);
+    padding: 10px 24px;
+    font-size: 0.85rem;
+    border-radius: 8px;
+    line-height: 1;
+}
+
+.btn-header-cadastro:hover {
+    background-color: #9c8265;
+}
+
+
+.hero-section {
+    background: linear-gradient(
+        135deg,
+        var(--detalhe-rosa) 0%,
+        var(--bg-creme) 100%
+    );
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 80px 10%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.hero-container {
+    max-width: 800px;
+    margin: 0 auto;
+    display: block;
+    width: 100%;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero-tagline {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--primaria-vinho);
+    display: block;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+.hero-section h1 {
+    font-size: 4rem;
+    line-height: 1.1;
+    color: var(--texto-marrom);
+    margin-bottom: 25px;
+}
+
+.hero-section h1 em {
+    color: var(--primaria-vinho);
+    font-style: italic;
+}
+
+.hero-section p {
+    max-width: 650px;
+    margin: 0 auto 35px auto;
+    color: var(--texto-suave);
+    font-size: 1.1rem;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+/* ============================================================
+   🎉 SEÇÃO OCASIÕES & CARDS
+   ============================================================ */
+#ocasioes {
+    background-color: var(--branco);
+}
+
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.card {
+    background-color: var(--branco);
+    padding: 45px 35px;
+    border-radius: 24px;
+    box-shadow: 0 10px 30px var(--sombra-suave);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px var(--sombra-card);
+}
+
+.card-icon {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+}
+
+.card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+}
+
+.card p {
+    color: var(--texto-suave);
+    font-size: 0.95rem;
+}
+
+/* ============================================================
+   💬 DEPOIMENTOS
+   ============================================================ */
+#testemunhos {
+    background-color: var(--detalhe-rosa);
+}
+
+.testemunhos-container {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.testemunho-box {
+    background: var(--branco);
+    flex: 1;
+    min-width: 300px;
+    padding: 35px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.02);
+    text-align: left;
+}
+
+.avatar {
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.testemunho-texto {
+    font-style: italic;
+    color: var(--texto-marrom);
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+}
+
+.estrelas {
+    color: var(--primaria-vinho);
+    margin-bottom: 10px;
+}
+
+.testemunho-box h4 {
+    font-size: 1rem;
+}
+
+.testemunho-box small {
+    color: var(--texto-suave);
+}
+
+/* ============================================================
+   🍰 CARDÁPIO 
+   ============================================================ */
+#cardapio {
+    background-color: var(--bg-creme);
+}
+
+.cardapio-grid-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.cardapio-box-item {
+    background-color: var(--branco);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px var(--sombra-suave);
+    overflow: hidden;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cardapio-box-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px var(--sombra-card);
+}
+
+.cardapio-img-container {
+    height: 250px;
+    width: 100%;
+    background-color: var(--branco);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    position: relative; 
+}
+
+.cardapio-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 12px;
+    transition: transform 0.4s ease;
+}
+
+.cardapio-efeito-hover {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    background: rgba(59, 36, 22, 0.7); 
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0; 
+    transition: opacity 0.3s ease;
+}
+
+.preco-hover {
+    color: var(--branco);
+    font-size: 1.2rem;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+}
+
+.cardapio-box-item:hover .cardapio-img {
+    transform: scale(1.05); 
+}
+
+.cardapio-box-item:hover .cardapio-efeito-hover {
+    opacity: 1; 
+}
+
+.cardapio-box-item:hover .preco-hover {
+    transform: translateY(0); 
+}
+
+.cardapio-info {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex-grow: 1;
+}
+
+.cardapio-info h3 {
+    font-size: 1.25rem;
+    color: var(--texto-marrom);
+}
+
+.cardapio-info p {
+    color: var(--texto-suave);
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.item-tag {
+    align-self: flex-start;
+    font-size: 0.75rem;
+    background-color: var(--bg-creme);
+    color: var(--primaria-vinho);
+    padding: 4px 12px;
+    border-radius: 10px;
+    font-weight: 600;
+    margin-top: auto;
+}
+
+/* ============================================================
+   📬 FORMULÁRIO DE CONTATO (LIMPO, CENTRALIZADO E LARGO)
+   ============================================================ */
+#contato {
+    background-color: var(--branco);
+}
+
+#contato .section-description {
+    max-width: 700px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 50px;
+}
+
+.form-limpo {
+    max-width: 650px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-limpo input, .form-limpo textarea {
+    width: 100%;
+    padding: 18px 20px;
+    border: 1px solid #E2E8F0;
+    border-radius: 8px;
+    background-color: #F8FAFC;
+    font-size: 0.95rem;
+    color: var(--texto-marrom);
+    font-family: 'Montserrat', sans-serif;
+}
+
+.form-limpo input::placeholder, .form-limpo textarea::placeholder {
+    color: #94A3B8;
+}
+
+.form-limpo input:focus, .form-limpo textarea:focus {
+    outline: none;
+    border-color: var(--primaria-vinho);
+    background-color: var(--branco);
+}
+
+.form-limpo textarea {
+    height: 120px;
+    resize: none;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.form-limpo .btn-submit {
+    width: auto;
+    min-width: 180px;
+    padding: 14px 40px;
+    background-color: var(--primaria-vinho);
+    color: var(--branco);
+    border: none;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.form-limpo .btn-submit:hover {
+    background-color: #821212;
+}
+
+.whatsapp-sutil {
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--texto-suave);
+    margin-top: 5px;
+}
+
+.whatsapp-sutil a {
+    color: var(--primaria-vinho);
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+/* ============================================================
+   🧦 FOOTER
+   ============================================================ */
+footer {
+    background-color: var(--texto-pink);
+    padding: 30px 10%;
+}
+
+.footer-bottom {
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--bg-creme);
+}
+
+/* ============================================================
+   📱 RESPONSIVIDADE (MEDIA QUERIES)
+   ============================================================ */
+@media (max-width: 992px) {
+    .hero-section h1 { font-size: 3rem; }
+    .hero-section p { font-size: 1rem; }
+}
+
+@media (max-width: 768px) {
+    .nav-menu { display: none; }
+    .hero-section h1 { font-size: 2.6rem; }
+    section { padding: 60px 5%; }
+}
+.categorias-bolos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 50px auto;
+}
+
+.categorias-bolos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 50px auto;
+}
+
+.categoria-card {
+    background: white;
+    padding: 40px;
+    border-radius: 24px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.05);
+}
+
+.categoria-card h3 {
+    margin-bottom: 15px;
+}
+
+.preco {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primaria-vinho);
+    margin-bottom: 20px;
+}
+
+.categoria-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.categoria-card li {
+    margin-bottom: 12px;
+}
+
+.destaque {
+    border: 2px solid var(--primaria-vinho);
+    transform: scale(1.03);
+}
+
+.personalize-section {
+    margin-top: 100px;
+}
+
+.personalize-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+    gap: 25px;
+    margin: 50px 0;
+}
+
+.personalize-card {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,.05);
+}
+
+.personalize-card span {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 15px;
+}
+.testemunhos-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 50px auto 0;
+}
+
+.testemunho-box {
+    background: white;
+    padding: 35px;
+    border-radius: 24px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.05);
+
+    transition: all .3s ease;
+}
+
+.testemunho-box:hover {
+    transform: translateY(-8px);
+}
+
+.avatar {
+    width: 90px;
+    height: 90px;
+    margin: 0 auto 20px auto;
+}
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid white;
+    box-shadow: 0 8px 20px rgba(0,0,0,.12);
+}
+
+.testemunho-texto {
+    color: var(--texto-suave);
+    margin-bottom: 20px;
+    line-height: 1.7;
+    font-style: italic;
+}
+
+.estrelas {
+    color: #f4b400;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+.testemunho-box h4 {
+    margin-bottom: 5px;
+}
+
+.testemunho-box small {
+    color: var(--texto-suave);
+}
+/* ============================================================
+   🌊 APENAS O EFEITO DA CHUVA GLOBAL 
+   ============================================================ */
+
+.elemento-chuva {
+  position: fixed; 
+  z-index: 9999;   
+  pointer-events: none; 
+  user-select: none;
+  animation: quedaGlobal linear forwards;
+}
+
+/* Animação da queda sem interferir em nenhuma div da página */
+@keyframes quedaGlobal {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(105vh) translateX(50px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-8px) !important;
+}
