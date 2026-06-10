@@ -1,10 +1,12 @@
 import { useState } from "react";
+import ReCAPTCHA from "react-google-recaptcha";
 
 export default function ContactSection() {
   const [form, setForm] = useState({
     email: "",
     mensagem: ""
   });
+  const [captchaToken, setCaptchaToken] = useState(null);
 
   function handleChange(e) {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -13,20 +15,28 @@ export default function ContactSection() {
   async function handleSubmit(e) {
     e.preventDefault();
 
+    if (!captchaToken) {
+  alert("Por favor, confirme que você não é um robô.");
+  return;
+}
+
     try {
       const response = await fetch("/.netlify/functions/contato", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify(form)
+        body: JSON.stringify({
+  ...form,
+  captchaToken
+})
       });
 
       const data = await response.json();
 
       if (response.ok && data.sucesso) {
         alert("Pedido enviado com sucesso!");
-        setForm({ email: "", mensaje: "" });
+        setForm({ email: "", mensagem: "" });
       } else {
         alert(data.mensagem || "Erro ao enviar mensagem.");
       }
@@ -67,9 +77,14 @@ export default function ContactSection() {
         </div>
 
         <div className="form-actions">
-          <button type="submit" className="btn btn-primary btn-submit">
-            Enviar
-          </button>
+  <ReCAPTCHA
+    sitekey="6Ld8IhgtAAAAAJXzGYTe0RusPpLTWF06hVOo02nQ"
+    onChange={(token) => setCaptchaToken(token)}
+  />
+
+      <button type="submit" className="btn btn-primary btn-submit">
+    Enviar
+     </button>
         </div>
 
         <p className="whatsapp-sutil">

@@ -1,7 +1,7 @@
 const nodemailer = require("nodemailer");
+const axios = require("axios");
 
 exports.handler = async (event) => {
-  // Só aceita POST
   if (event.httpMethod !== "POST") {
     return {
       statusCode: 405,
@@ -13,9 +13,39 @@ exports.handler = async (event) => {
   }
 
   try {
-    const { email, mensagem } = JSON.parse(event.body);
+    const { email, mensagem, captchaToken } = JSON.parse(event.body);
 
     if (!email || !mensagem) {
+      if (!captchaToken) {
+  return {
+    statusCode: 400,
+    body: JSON.stringify({
+      sucesso: false,
+      mensagem: "Captcha não informado.",
+    }),
+  };
+}
+
+const captchaResponse = await axios.post(
+  "https://www.google.com/recaptcha/api/siteverify",
+  null,
+  {
+    params: {
+      secret: process.env.RECAPTCHA_SECRET_KEY,
+      response: captchaToken,
+    },
+  }
+);
+
+if (!captchaResponse.data.success) {
+  return {
+    statusCode: 400,
+    body: JSON.stringify({
+      sucesso: false,
+      mensagem: "Falha na validação do captcha.",
+    }),
+  };
+}
       return {
         statusCode: 400,
         body: JSON.stringify({
