@@ -2,11 +2,13 @@ const serverless = require('serverless-http');
 const express = require('express');
 const nodemailer = require('nodemailer');
 const cors = require('cors');
-const path = require('path');
 
-require('dotenv').config({ path: path.resolve(__dirname, '.env') });
+require('dotenv').config();
 
 const app = express();
+app.get("/", (req, res) => {
+  res.json({ status: "API funcionando" });
+});
 
 const usuariosCadastrados = [];
 
@@ -18,7 +20,6 @@ console.log("EMAIL_USER cadastrado?:", process.env.EMAIL_USER ? "✅ Sim" : "❌
 console.log("EMAIL_PASS cadastrado?:", process.env.EMAIL_PASS ? "✅ Sim" : "❌ Não");
 console.log("==========================");
 
-// 🔥 ALTERAÇÃO: Removido o '/api' do início da rota para casar com o redirecionamento do Netlify
 app.post('/contato', async (req, res) => {
     console.log("📥 Dados recebidos do Frontend:", req.body);
 
@@ -38,8 +39,8 @@ app.post('/contato', async (req, res) => {
 
     try {
         const transporter = nodemailer.createTransport({
-            host: process.env.EMAIL_HOST || 'smtp.gmail.com',
-            port: parseInt(process.env.EMAIL_PORT) || 465,
+            host: 'smtp.gmail.com',
+            port: 465,
             secure: true, 
             auth: {
                 user: emailUsuario,
@@ -65,7 +66,7 @@ app.post('/contato', async (req, res) => {
         };
 
         await transporter.sendMail(mailOptions);
-        console.log("✅ E-mail enviado com sucesso para a caixa de entrada!");
+        console.log("✅ E-mail enviado com sucesso!");
         
         return res.status(200).json({ 
             sucesso: true, 
@@ -81,7 +82,6 @@ app.post('/contato', async (req, res) => {
     }
 });
 
-// 🔥 ALTERAÇÃO: Removido o '/api'
 app.post('/cadastro', (req, res) => {
     const { nome, email, senha } = req.body;
 
@@ -101,15 +101,12 @@ app.post('/cadastro', (req, res) => {
     }
 
     usuariosCadastrados.push({ nome, email, senha });
-    console.log("Usuário cadastrado com sucesso:", { nome, email });
-
     return res.json({
         sucesso: true,
         mensagem: "Cadastro realizado com sucesso 🍰"
     });
 });
 
-// 🔥 ALTERAÇÃO: Removido o '/api'
 app.post('/login', (req, res) => {
     const { email, senha } = req.body;
 

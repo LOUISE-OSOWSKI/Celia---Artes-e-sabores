@@ -14,8 +14,7 @@ export default function ContactSection() {
     e.preventDefault();
 
     try {
-      // Apontando para a rota padrão do seu server.js (/api/contato)
-      const response = await fetch("/api/contato", {
+      const response = await fetch("/.netlify/functions/api/contato", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
