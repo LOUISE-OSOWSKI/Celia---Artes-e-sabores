@@ -14,7 +14,7 @@ export default function ContactSection() {
     e.preventDefault();
 
     try {
-      const response = await fetch("/.netlify/functions/api/contato", {
+      const response = await fetch("/.netlify/functions/contato", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
