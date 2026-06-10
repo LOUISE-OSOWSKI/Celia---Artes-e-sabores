@@ -15,7 +15,7 @@ export default function Cadastro() {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:3000/api/cadastro", {
+      const response = await fetch("/api/cadastro", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -27,9 +27,7 @@ export default function Cadastro() {
 
       if (response.ok && data.sucesso) {
         alert(data.mensagem || "Cadastro realizado com sucesso! 🍰");
-        // Limpa o formulário
         setForm({ nome: "", email: "", senha: "" });
-        // Redireciona o usuário para a tela de login
         window.location.href = "/login";
       } else {
         alert(data.mensagem || "Erro ao realizar o cadastro.");

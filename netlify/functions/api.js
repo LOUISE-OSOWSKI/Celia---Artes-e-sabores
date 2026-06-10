@@ -1,3 +1,4 @@
+const serverless = require('serverless-http');
 const express = require('express');
 const nodemailer = require('nodemailer');
 const cors = require('cors');
@@ -69,7 +70,7 @@ app.post('/api/contato', async (req, res) => {
                     <p><strong>E-mail do Cliente:</strong> <a href="mailto:${email}">${email}</a></p>
                     <div style="background-color: #f8fafc; padding: 15px; border-radius: 6px; border-left: 4px solid #8B0000; margin-top: 20px;">
                         <p style="margin: 0; font-weight: bold; color: #555;">Mensagem / Detalhes da Encomenda:</p>
-                        <p style="margin-top: 10px; white-space: pre-wrap;">${mensagem}</p>
+                        <p style="margin-top:10px; white-space: pre-wrap;">${mensagem}</p>
                     </div>
                 </div>
             `
@@ -153,6 +154,5 @@ app.post('/api/login', (req, res) => {
 });
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`🚀 Servidor rodando com sucesso na porta ${PORT}`);
-});
+// Exporta o Express envelopado para o ambiente serverless do Netlify
+module.exports.handler = serverless(app);

@@ -15,7 +15,7 @@ export default function ContactSection() {
 
     try {
       // Apontando para a rota padrão do seu server.js (/api/contato)
-      const response = await fetch("http://localhost:3000/api/contato", {
+      const response = await fetch("/api/contato", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

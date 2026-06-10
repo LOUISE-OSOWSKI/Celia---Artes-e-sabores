@@ -10,12 +10,11 @@ export default function Login() {
     setForm({ ...form, [e.target.name]: e.target.value });
   }
 
-  // 🔥 NOVA FUNÇÃO CONECTADA AO BACKEND
   async function handleSubmit(e) {
     e.preventDefault();
     
     try {
-      const response = await fetch("http://localhost:3000/api/login", {
+      const response = await fetch("/api/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -28,10 +27,10 @@ export default function Login() {
       if (response.ok && data.sucesso) {
         alert(data.mensagem || "Login realizado com sucesso! 🍰");
         
-        // 🔥 Guarda o nome retornado pelo backend no navegador
+        
         localStorage.setItem("usuarioNome", data.nome);
         
-        // Redireciona de volta para a página inicial
+        
         window.location.href = "/";
       } else {
         alert(data.mensagem || "E-mail ou senha incorretos.");
