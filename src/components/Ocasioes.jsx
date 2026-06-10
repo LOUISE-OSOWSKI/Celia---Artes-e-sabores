@@ -53,7 +53,7 @@ function Ocasioes() {
           <div className="card-icon">🎉</div>
           <h3>Aniversários</h3>
           <p>
-            Ideia matadora para sua festa! Bolos personalizados que ganham
+            Ideia para sua festa! Bolos personalizados que ganham
             diversos elogios pelo sabor marcante e riqueza de detalhes
             decorativos.
           </p>

@@ -4,35 +4,26 @@ const nodemailer = require('nodemailer');
 const cors = require('cors');
 const path = require('path');
 
-
 require('dotenv').config({ path: path.resolve(__dirname, '.env') });
 
 const app = express();
 
-// Banco de dados em memória temporário para testes
 const usuariosCadastrados = [];
 
-// Configuração do CORS para o ReacT
-app.use(cors({ origin: 'http://localhost:5173' }));
+app.use(cors());
 app.use(express.json());
 
-// 🔍 TESTE AUTOMÁTICO DE VARIÁVEIS NA INICIALIZAÇÃO
 console.log("=== TESTE DE VARIÁVEIS ===");
 console.log("EMAIL_USER cadastrado?:", process.env.EMAIL_USER ? "✅ Sim" : "❌ Não");
 console.log("EMAIL_PASS cadastrado?:", process.env.EMAIL_PASS ? "✅ Sim" : "❌ Não");
-console.log("Porta configurada:", process.env.PORT || "3000 (Padrão)");
 console.log("==========================");
 
-// ============================================================
-// 📬 ROTA: DISPARO DE E-MAILS DE CONTATO 
-// ============================================================
-app.post('/api/contato', async (req, res) => {
-    // 1. Monitoriza o que está a chegar do React
+// 🔥 ALTERAÇÃO: Removido o '/api' do início da rota para casar com o redirecionamento do Netlify
+app.post('/contato', async (req, res) => {
     console.log("📥 Dados recebidos do Frontend:", req.body);
 
     const { email, mensagem } = req.body;
 
-    // 2. Validação rigorosa para evitar campos vazios
     if (!email || !mensagem || String(email).trim() === "" || String(mensagem).trim() === "") {
         console.log("⚠️ Validação falhou: E-mail ou mensagem vazios.");
         return res.status(400).json({ 
@@ -41,13 +32,11 @@ app.post('/api/contato', async (req, res) => {
         });
     }
 
-    // 3. Definição das credenciais com fallbacks seguros
     const emailUsuario = process.env.EMAIL_USER || 'celiaartesesabores@gmail.com';
     const senhaApp = process.env.EMAIL_PASS;
     const emailDestino = process.env.EMAIL_RECEIVER || 'celiaartesesabores@gmail.com';
 
     try {
-        // 4. Configuração do transporte SMTP do Gmail
         const transporter = nodemailer.createTransport({
             host: process.env.EMAIL_HOST || 'smtp.gmail.com',
             port: parseInt(process.env.EMAIL_PORT) || 465,
@@ -58,7 +47,6 @@ app.post('/api/contato', async (req, res) => {
             }
         });
 
-        // 5. Montagem estruturada do envelope do e-mail
         const mailOptions = {
             from: `"Site Célia Artes" <${emailUsuario}>`,
             to: String(emailDestino).trim(), 
@@ -76,7 +64,6 @@ app.post('/api/contato', async (req, res) => {
             `
         };
 
-        // 6. Envio do e-mail
         await transporter.sendMail(mailOptions);
         console.log("✅ E-mail enviado com sucesso para a caixa de entrada!");
         
@@ -94,10 +81,8 @@ app.post('/api/contato', async (req, res) => {
     }
 });
 
-// ============================================================
-// 🧾 ROTA: CADASTRO 
-// ============================================================
-app.post('/api/cadastro', (req, res) => {
+// 🔥 ALTERAÇÃO: Removido o '/api'
+app.post('/cadastro', (req, res) => {
     const { nome, email, senha } = req.body;
 
     if (!nome || !email || !senha) {
@@ -124,10 +109,8 @@ app.post('/api/cadastro', (req, res) => {
     });
 });
 
-// ============================================================
-// 🔐 ROTA: LOGIN
-// ============================================================
-app.post('/api/login', (req, res) => {
+// 🔥 ALTERAÇÃO: Removido o '/api'
+app.post('/login', (req, res) => {
     const { email, senha } = req.body;
 
     if (!email || !senha) {
@@ -153,6 +136,4 @@ app.post('/api/login', (req, res) => {
     });
 });
 
-const PORT = process.env.PORT || 3000;
-// Exporta o Express envelopado para o ambiente serverless do Netlify
 module.exports.handler = serverless(app);
